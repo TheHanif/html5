@@ -8,7 +8,7 @@
 
 </head>
 <body>
-	<h1>Test 2</h1>
+	<h1>Test 3</h1>
 
 	<p id="test1"></p>
 	<p id="test2"></p>
@@ -18,11 +18,19 @@
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 	<script>
-	$(function() {
+	
+	$(document).on("mobileinit", function(){
 		$.post('http://www.thedesignin.com/html5.php', function(data, textStatus, xhr) {
 			$('#test1').html(data);
 			$('#test2').html(textStatus);
 			$('#test3').html(xhr);
+		});
+
+  		$.ajax({
+		   url:'http://www.thedesignin.com/html5.php',
+		   success: function(result) {
+		    alert(result);
+		   } // <-- add this
 		});
 	});
 	</script>
