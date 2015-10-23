@@ -1,0 +1,31 @@
+<!DOCTYLE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<meta name="viewport" content="user-scalable=no, width=device-width">
+
+</head>
+<body>
+	<h1>Test 1</h1>
+
+	<p id="test1"></p>
+	<p id="test2"></p>
+	<p id="test3"></p>
+
+	<!-- Latest compiled and minified JS -->
+	<script src="http://code.jquery.com/jquery.js"></script>
+
+	<script>
+	$(function() {
+		$.post('http://www.thedesignin.com/html5.php', function(data, textStatus, xhr) {
+			$('#test1').html(data);
+			$('#test2').html(textStatus);
+			$('#test3').html(xhr);
+		});
+	});
+	</script>
+
+</body>
+</html>
