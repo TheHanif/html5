@@ -1,59 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>jQM Complex Demo</title>
-    <meta name="viewport" content="width=device-width"/>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-</head>
-<body>
-    <div data-role="page" id="index">
-        <div data-role="content">
-            <h2>Simple list</h2>
-            <ul data-role="listview" data-inset="true" id="movie-data" data-theme="a">
-
-            </ul>
-        </div>
-    </div>
-</body>
-<script>
-$('#index').on('pagebeforeshow',function(e,data){ 
-    $.ajax({url: "http://www.thedesignin.com/html5.php",
-
-        jsonpCallback: 'successCallback',
-        async: true,
-        beforeSend: function() {
-            // $.mobile.showPageLoadingMsg(true);
-        },
-        complete: function() {
-            // $.mobile.hidePageLoadingMsg();
-        },
-        success: function (result) {
-            ajax.parseJSONP(result);
-        },
-        error: function (request,error) {
-            alert('Network error has occurred please try again!');
-        }
-    });         
-});
-
-
-var ajax = {  
-    parseJSONP:function(result){
-        //var jsonObj = jQuery.parseJSON(parameters);
-        $('#movie-data').append('<li>Movie name:<span>'+result+'</span></li>');
-        $('#movie-data').append('<li>Popularity:<span></span></li>');
-        
-
-    var newTheme = 'b';
-
-    $.mobile.activePage.find('.ui-btn, .ui-li, .ui-listview').removeClass('ui-btn-up-a ui-btn-up-b ui-btn-up-c ui-btn-up-d ui-btn-up-e ui-btn-hover-a ui-btn-hover-b ui-btn-hover-c ui-btn-hover-d ui-btn-hover-e').addClass('ui-btn-up-' + newTheme ).attr('data-theme', newTheme );
-    $.mobile.activePage.find('.ui-header, .ui-footer').removeClass('ui-bar-a ui-bar-b ui-bar-c ui-bar-d ui-bar-e').addClass('ui-bar-' + newTheme ).attr('data-theme', newTheme );
-    $.mobile.activePage.removeClass('ui-body-a ui-body-b ui-body-c ui-body-d ui-body-e').addClass('ui-body-' + newTheme ).attr('data-theme', newTheme );        
-        
-    }
-}
-
-</script>
-</html>
+<!DOCTYPE html> 
+<html>  
+  <head>
+    <title>Golf score keeper</title>
+    <script src="http://www.google.com/jsapi"></script>
+    <script>
+      google.load("jquery", "1.4.1");
+    </script>
+  </head>
+  <body>
+    <form action="upload.html" method="get">
+      <div>
+        <label for="1">Hole 1</label>
+        <input type="number" min="1" value="4" name="1" size="2" step="1" />
+      </div>
+      <div>
+        <label for="2">Hole 2</label>
+        <input type="number" min="1" value="4" name="2" size="2" step="1" />
+      </div>
+      <div>
+        <input type="email" placeholder="Enter your email address" size="40"/>
+      </div>
+      <div>
+        <input type="text" id="lat_field" name="latitude" />
+        <input type="text" id="long_field" name="longitude" />
+      </div>
+      <script>
+        navigator.geolocation.getCurrentPosition(
+          function(pos) {
+            $("#lat_field").val(pos.coords.latitude);
+            $("#long_field").val(pos.coords.longitude);
+          }
+        );
+      </script>
+      <div>
+        <input type="submit" value="Upload Score" />
+      </div>
+    </form>
+  </body>
+</html> 
